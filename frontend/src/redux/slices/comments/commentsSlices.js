@@ -26,7 +26,7 @@ export const CreateCommentsAction = createAsyncThunk(
       };
 
       const { data } = await axios.post(
-        `http://localhost:8040/api/v1/comments/${payload.Id}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/comments/${payload.Id}`,
         { message: payload.message },
         config
       );

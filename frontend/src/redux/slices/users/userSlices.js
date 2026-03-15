@@ -33,7 +33,7 @@ export const registerAction = createAsyncThunk(
     try {
       console.log("users profile fetching start");
       const { data } = await axios.post(
-        "http://localhost:8040/api/v1/users/register",
+        "https://my-bloggy-tech-server-application.vercel.app/api/v1/users/register",
         payload
       );
       console.log(data);
@@ -54,7 +54,7 @@ export const loginAction = createAsyncThunk(
     //make Request
     try {
       const { data } = await axios.post(
-        "http://localhost:8040/api/v1/users/login",
+        "https://my-bloggy-tech-server-application.vercel.app/api/v1/users/login",
         payload
       );
       localStorage.setItem("userInfo", JSON.stringify(data));
@@ -75,7 +75,7 @@ export const forgotPasswordAction = createAsyncThunk(
     try {
       
       const data = await axios.post(
-        "http://localhost:8040/api/v1/users/forgot-password",
+        "https://my-bloggy-tech-server-application.vercel.app/api/v1/users/forgot-password",
         payload
       );
       console.log("data is ",data);
@@ -103,7 +103,7 @@ export const updateProfilePictureAction = createAsyncThunk(
 
       console.log("user id is ", payload.data.file.name);
       const { data } = await axios.post(
-        `http://localhost:8040/api/v1/users/profile-picture/${payload?.data?.userId}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/profile-picture/${payload?.data?.userId}`,
         formData,
         config
       );
@@ -131,7 +131,7 @@ export const updateCoverImageAction = createAsyncThunk(
 
       console.log("user id is ", payload.data.file.name);
       const { data } = await axios.post(
-        `http://localhost:8040/api/v1/users/cover-image/${payload?.data?.userId}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/cover-image/${payload?.data?.userId}`,
         formData,
         config
       );
@@ -164,7 +164,7 @@ export const getPublicProfileAction = createAsyncThunk(
       };
       //  Fetch public profile by user ID or username (payload)
       const { data } = await axios.get(
-        `http://localhost:8040/api/v1/users/public-profile/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/public-profile/${payload}`,
         config
       );
 
@@ -190,7 +190,7 @@ export const getPrivateProfileAction = createAsyncThunk(
       };
 
       const { data } = await axios.get(
-        `http://localhost:8040/api/v1/users/private-profile`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/private-profile`,
         config
       );
       return data;
@@ -216,7 +216,7 @@ export const userFollowAction = createAsyncThunk(
       };
       console.log("jwt is  ", config);
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/users/following/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/following/${payload}`,
         {},
         config
       );
@@ -240,7 +240,7 @@ export const userUnFollowAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/users/unfollow/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/unfollow/${payload}`,
         {},
         config
       );
@@ -266,7 +266,7 @@ export const userBlockAction = createAsyncThunk(
       };
 
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/users/block/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/block/${payload}`,
         {},
         config
       );
@@ -290,7 +290,7 @@ export const userUnBlockAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/users/unblock/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/users/unblock/${payload}`,
         {},
         config
       );
@@ -324,10 +324,10 @@ const userSlice = createSlice({
     });
 
     // Forgot password
-    builder.addCase(forgotPasswordAction.pending, (state, action) => {
+    builder.addCase(forgotPasswordAction.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(forgotPasswordAction.fulfilled, (state, action) => {
+    builder.addCase(forgotPasswordAction.fulfilled, (state) => {
       (state.loading = false), (state.success = true), (state.error = null);
     });
     builder.addCase(forgotPasswordAction.rejected, (state, action) => {
@@ -444,7 +444,7 @@ const userSlice = createSlice({
       state.error = null;
       state.success = null;
     });
-    builder.addCase(userUnFollowAction.fulfilled, (state, action) => {
+    builder.addCase(userUnFollowAction.fulfilled, (state) => {
       state.loading = false;
       state.error = null;
       // state.success = action.payload
@@ -478,7 +478,7 @@ const userSlice = createSlice({
       state.error = null;
       state.success = null;
     });
-    builder.addCase(userUnBlockAction.fulfilled, (state, action) => {
+    builder.addCase(userUnBlockAction.fulfilled, (state) => {
       state.loading = false;
       state.error = null;
       // state.success = action.payload

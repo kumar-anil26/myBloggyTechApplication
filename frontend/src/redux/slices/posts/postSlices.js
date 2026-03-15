@@ -21,7 +21,7 @@ export const fetchPublicPostsAction = createAsyncThunk(
     //Make request
     try {
       const { data } = await axios.get(
-        "http://localhost:8040/api/v1/posts/public"
+        "https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/public"
       );
       return data;
     } catch (error) {
@@ -43,7 +43,7 @@ export const PostsListAction = createAsyncThunk(
         },
       };
       const { data } = await axios.get(
-        "http://localhost:8040/api/v1/posts",
+        "https://my-bloggy-tech-server-application.vercel.app/api/v1/posts",
         config
       );
       return data;
@@ -61,7 +61,7 @@ export const getPostAction = createAsyncThunk(
     //Make request
     try {
       const { data } = await axios.get(
-        `http://localhost:8040/api/v1/posts/${payload}`
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/${payload}`
       );
       return data;
     } catch (error) {
@@ -93,7 +93,7 @@ export const createPostAction = createAsyncThunk(
         },
       };
       const { data } = await axios.post(
-        "http://localhost:8040/api/v1/posts",
+        "https://my-bloggy-tech-server-application.vercel.app/api/v1/posts",
         formData,
         config
       );
@@ -117,7 +117,7 @@ export const updatePostAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/posts/${payload.id}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/${payload.id}`,
         payload.formData,
         config
       );
@@ -142,7 +142,7 @@ export const deletePostAction = createAsyncThunk(
         },
       };
       const { data } = await axios.delete(
-        `http://localhost:8040/api/v1/posts/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/${payload}`,
         config
       );
       return data;
@@ -166,7 +166,7 @@ export const likesPostAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/posts/like/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/like/${payload}`,
         {},
         config
       );
@@ -192,7 +192,7 @@ export const disLikesPostAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/posts/dislike/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/dislike/${payload}`,
         {},
         config
       );
@@ -217,7 +217,7 @@ export const viewsPostAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/posts/views/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/views/${payload}`,
         {},
         config
       );
@@ -242,7 +242,7 @@ export const clapsPostAction = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `http://localhost:8040/api/v1/posts/claps/${payload}`,
+        `https://my-bloggy-tech-server-application.vercel.app/api/v1/posts/claps/${payload}`,
         {},
         config
       );

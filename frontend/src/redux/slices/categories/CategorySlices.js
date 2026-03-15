@@ -17,7 +17,7 @@ export const fetchCategoriesAction = createAsyncThunk(
     try {
       //fetch category
       const { data } = await axios.get(
-        "http://localhost:8040/api/v1/Categories"
+        "https://my-bloggy-tech-server-application.vercel.app/api/v1/Categories"
       );
       return data;
     } catch (error) {
